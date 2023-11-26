@@ -10,7 +10,7 @@ thingESP-micropython is just a translated version of thingESP with a interrupt m
 
 usage :
 
-copy ThingESP.py file and save it as "ThingESP.py", then initialize it in main.py file with authentication key and project name and username ( explained in the code ).
+copy ThingESP.py file and save it as "ThingESP.py", then initialize it in main.py file with authentication key, project name and username ( explained in the code ).
 and you are good to go!
 
 tested with MicroPython v1.20.0 on 2023-04-26; ESP module (1M) with ESP8266
