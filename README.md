@@ -1,7 +1,7 @@
 Imagine you want to use Whatsapp to control a microcontroller...
 
-you search something similar on the internet and found a solution, which is Twilio connected with the thingESP server.
-But there is a problem you are a hardcore Micropython user and ThinngESP is based on arduino. If you are anything like me you don't want to learn a whole new language,
+you search something similar on the internet and found a solution, a simple script/code which uses Twilio connected with the thingESP server.
+But there is a problem. You are a hardcore Micropython user and ThinngESP script is based on arduino. If you are anything like me you don't want to learn a whole new language,
 for a single project.
 
 DON't worry I got you.....
