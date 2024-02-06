@@ -57,11 +57,10 @@ class Client:
         self.mqtt_client.set_callback(self.on_message)
         self.mqtt_client.subscribe(self.projectName + "/" + self.username)
         while True:
-            self.mqtt_client.check_msg()   # Pass blocking argument as False
+            self.mqtt_client.check_msg()
             # Add other non-blocking operations here
-            # For example, reading sensors, handling callbacks, etc.
-            # Be sure to avoid long blocking operations
-            time.sleep(0.1)
+            # For example, reading sensors, handling callbacks (shown in the main.py file), etc.
+            time.sleep(0.1) # pro tip : play with this sleep function
             
 #this part is to send messages from your ESP module
 def send_msg(msg):
