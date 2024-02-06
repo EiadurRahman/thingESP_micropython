@@ -10,7 +10,7 @@
 # btn = Pin(0, Pin.IN , Pin.PULL_UP)
 
 import ThingESP
-thing = ThingESP.Client('user_name', 'projectname', 'password')
+thing = ThingESP.Client('user_name', 'project_name', 'password')
 ThingESP.send_msg('device is back online ')
 
 led_1 = False
