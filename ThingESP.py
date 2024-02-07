@@ -48,11 +48,6 @@ class Client:
                 self.mqtt_client.publish(
                     self.projectName + "/" + self.username, json.dumps(sendr))
 
-    def device_call(self, to_num, msg):
-        out = {"action": "device_call", "to_number": to_num, "msg": msg}
-        self.mqtt_client.publish(
-            self.projectName+"/"+self.username, json.dumps(out))
-
     def start(self):
         self.mqtt_client.set_callback(self.on_message)
         self.mqtt_client.subscribe(self.projectName + "/" + self.username)
