@@ -57,7 +57,9 @@ class Client:
             # For example, reading sensors, handling callbacks (shown in the main.py file), etc.
             time.sleep(0.1) # pro tip : play with this sleep function
             
-#this part is to send messages from your ESP module
+# this part is to send messages from your ESP module
+# this part does not relay on ThingESP server, it sends message indipendently. if your device lost connection with ThingESP,
+# your esp will still be able to send meassages 
 def send_msg(msg):
     # Your Twilio Account SID and Auth Token
     account_sid = 'account_sid'
