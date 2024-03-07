@@ -47,15 +47,26 @@ class Client:
                     "msg_id": payload['msg_id'], "action": "returned_api_response", "returned_api_response": out}
                 self.mqtt_client.publish(
                     self.projectName + "/" + self.username, json.dumps(sendr))
+    # this part also allows you to send messeges from your esp BUT....
+    # this function is encluded in the Client class, thus depends on ThingESP
+    # you can message multipal numbers
+    def device_call(self, to_num, msg):
+        out = {"action": "device_call", "to_number": to_num, "msg": msg}
+        self.mqtt_client.publish(
+            self.projectName+"/"+self.username, json.dumps(out))
+
+
 
     def start(self):
         self.mqtt_client.set_callback(self.on_message)
         self.mqtt_client.subscribe(self.projectName + "/" + self.username)
         while True:
-            self.mqtt_client.check_msg()
+            self.mqtt_client.check_msg()   # Pass blocking argument as False
             # Add other non-blocking operations here
-            # For example, reading sensors, handling callbacks (shown in the main.py file), etc.
-            time.sleep(0.1) # pro tip : play with this sleep function
+            # For example, reading sensors, handling callbacks, etc.
+            # Be sure to avoid long blocking operations
+            time.sleep(0.1)
+            
             
 # this part is to send messages from your ESP module
 # this part does not relay on ThingESP server, it sends message indipendently. if your device lost connection from ThingESP,
