@@ -1,16 +1,71 @@
-Imagine you want to use Whatsapp to control a microcontroller...
+# MicroPython Library: ThingESP Client
 
-you search something similar on the internet and found a solution, a simple script/code which uses Twilio connected with the thingESP server.
-But there is a problem. You are a hardcore Micropython user and ThinngESP script is based on arduino. If you are anything like me you don't want to learn a whole new language,
-for a single project.
+The ThingESP Client library facilitates easy communication with the ThingESP platform using MQTT for IoT projects on MicroPython-based microcontroller boards. It allows you to interact with the ThingESP platform, subscribe to messages, and perform actions based on received messages.
 
-DON't worry I got you.....
+## Installation
 
-thingESP-micropython is just a translated version of thingESP with a interrupt message function ( explained in the code ).
+1. Ensure your MicroPython environment is set up on your microcontroller board.
+2. Copy the `thingesp_client.py` file to your project directory.
 
-usage :
+## Usage
 
-copy ThingESP.py file and save it as "ThingESP.py", then initialize it in main.py file with authentication key, project name and username ( explained in the code ).
-and you are good to go!
+```python
+from machine import Pin
+from thingesp_client import Client
 
-tested with MicroPython v1.20.0 on 2023-04-26; ESP module (1M) with ESP8266
+# Initialize ThingESP client
+client = Client(username='your_username', projectName='your_projectName', password='your_password')
+
+# Set up a callback function to handle incoming messages
+def on_message(query):
+    # Process the query and return a response
+    return "Response to query: " + query
+
+# Set the callback function
+client.setCallback(on_message)
+
+# Start listening for messages
+client.start()
+```
+
+## API Reference
+
+### `Client(username, projectName, password)`
+
+Creates a ThingESP client instance.
+
+- `username`: Your ThingESP username.
+- `projectName`: The name of your project on ThingESP.
+- `password`: Your ThingESP password.
+
+### `setCallback(func)`
+
+Sets the callback function to handle incoming messages.
+
+- `func`: The callback function. It should accept a single argument (the query) and return a response.
+
+### `start()`
+
+Starts the client, listening for messages from ThingESP.
+
+### `device_call(to_num, msg)`
+
+Sends a message from your ESP module to a specified number.
+
+- `to_num`: The recipient's phone number.
+- `msg`: The message to send.
+
+## Independent Message Sending
+
+The `send_msg(msg)` function allows you to send messages independently, without relying on the ThingESP server. This function utilizes the Twilio API for sending WhatsApp messages.
+
+```python
+from thingesp_client import send_msg
+
+# Send a message
+send_msg("Hello from your ESP!")
+```
+
+## Contributions
+
+Contributions and feedback are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or create a pull request on [GitHub](https://github.com/yourusername/thingesp-client-python).
