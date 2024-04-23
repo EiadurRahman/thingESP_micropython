@@ -10,22 +10,24 @@ The ThingESP Client library facilitates easy communication with the ThingESP pla
 ## Usage
 
 ```python
-from machine import Pin
-from thingesp_client import Client
+import ThingESP
+thing = ThingESP.Client('user_name', 'project_name', 'password')
+ThingESP.send_msg('device is back online ')
 
-# Initialize ThingESP client
-client = Client(username='your_username', projectName='your_projectName', password='your_password')
+# this function handles query, add conditions to trigger certain tasks
+def handleResponse(query):
+    if query == 'are you up?':
+        return 'Iam up!'
 
-# Set up a callback function to handle incoming messages
-def on_message(query):
-    # Process the query and return a response
-    return "Response to query: " + query
+    else:
+        return 'no task is set for [%s]'%query
 
-# Set the callback function
-client.setCallback(on_message)
 
-# Start listening for messages
-client.start()
+thing.setCallback(handleResponse).start()
+
+print('END_TASK')
+
+
 ```
 
 ## API Reference
