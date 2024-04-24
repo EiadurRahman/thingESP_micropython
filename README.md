@@ -70,4 +70,4 @@ send_msg("Hello from your ESP!")
 
 ## Contributions
 
-Contributions and feedback are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or create a pull request on.
+Contributions and feedback are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or create a pull request on github.
